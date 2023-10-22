@@ -1,0 +1,34 @@
+<div class="col-md-10 blogShort">
+    <h1>{{article?.title}}</h1>
+    <img [src]="article?.image" alt="post img" class="img-responsive postImg img-thumbnail margin10">
+    <article>
+        <div *ngFor="let paragraph of article?.content">
+            <h2>{{paragraph.title}}</h2>
+            <p>{{paragraph.content}}</p>
+        </div>
+    </article>
+    <svg id="like" xmlns="http://www.w3.org/2000/svg" width="5%" fill="gray" class="bi bi-heart-fill" viewBox="0 0 16 16" (click)="like()" style="margin-top: 4%;margin-bottom: 4%">
+        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"></path>
+    </svg>
+    <label for="like" style="font-size: 200%; margin-left: 2%;">J'aime</label>
+</div>
+
+<div class="col-md-10 blogShort">
+    <div class="col-md-8">
+        <div class="page-header">
+            <h1><small class="pull-right">{{comments.length}} commentaires</small> Commentaires </h1>
+        </div>
+        <div *ngFor="let comment of comments" class="comments-list">
+            <div class="media">
+                <p class="pull-right"><small>{{comment.commentDate}}</small></p>
+                <a class="media-left" href="#">
+                    <img src="../../assets/profile.png" style="width: 12%;">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading user_name">{{comment.user.name}}</h4>
+                    {{comment.content}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

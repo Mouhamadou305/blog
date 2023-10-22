@@ -1,0 +1,18 @@
+h2{color:#34ca78;}
+.margin10{margin-bottom:10px; margin-right:10px;}
+
+#blog{
+    margin-top: 5%;
+}
+
+@media only screen and (max-width: 767px) {
+    #blog{
+        margin-top: 15%;
+    }
+}
+
+@media only screen and (max-width: 992px) and (min-width: 767px) {
+    #blog{
+        margin-top: 20%;
+    }
+}

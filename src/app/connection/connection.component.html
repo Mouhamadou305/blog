@@ -1,0 +1,33 @@
+<form style="width: 50%; margin-top: 12%; margin-left: 25%;" [formGroup]="applyForm">
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        <input type="email" id="form2Example1" class="form-control" formControlName="email"/>
+        <label class="form-label" for="form2Example1">Adresse email</label>
+            <div class="field-message text-danger" for="form2Example1" *ngIf="applyForm.get('email')?.invalid && applyForm.get('email')?.touched">
+                Entrez votre adresse email
+            </div>
+    </div>
+  
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+        <div>
+            <input [type]="passwordType" id="form2Example2" class="form-control" formControlName="password"/>
+            <button class="{{eye}} passwordVisibility form-control" (click)="changePasswordVisibility()"></button>
+        </div>
+        <label class="form-label" for="form2Example2">Mot de passe</label>
+        <div class="field-message text-danger" for="form2Example1" *ngIf="applyForm.get('password')?.invalid && applyForm.get('password')?.touched">
+            Entrez votre mot de passe
+        </div>
+        <div class="field-message text-danger" for="form2Example1" *ngIf="applyForm.hasError('login')">
+            Adresse email ou mot de passe incorrect
+        </div>
+    </div>
+  
+    <!-- Submit button -->
+    <button type="button" class="btn btn-primary btn-block mb-4">Se connecter</button>
+  
+    <!-- Register buttons -->
+    <div class="text-center">
+        <p>Vous n'êtes pas membre? <a routerLink="/registration">S'inscrire</a></p>
+    </div>
+</form>
