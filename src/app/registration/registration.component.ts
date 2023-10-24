@@ -71,17 +71,19 @@ export class RegistrationComponent {
   }
 
   createUser(){
-    this.user.email= this.applyForm.value.email ?? '';
-    this.user.password= this.applyForm.value.password ?? '';
-    this.user.name= this.applyForm.value.name ?? '';
-    this.user.id= Math.ceil(Math.random()*100000);
-    this._api.add(this.endpoint, this.user).subscribe(
-      (data : User) => {
-        this.user = data;
-        this._router.navigate([`/login`], {});
-        alert("Inscription réussie! Connectez vous!!!");
-      }
-    )
+    if(this.applyForm.valid) {
+      this.user.email= this.applyForm.value.email ?? '';
+      this.user.password= this.applyForm.value.password ?? '';
+      this.user.name= this.applyForm.value.name ?? '';
+      this.user.id= Math.ceil(Math.random()*100000);
+      this._api.add(this.endpoint, this.user).subscribe(
+        (data : User) => {
+          this.user = data;
+          this._router.navigate([`/login`], {});
+          alert("Inscription réussie! Connectez vous!!!");
+        }
+      )
+    }
   }
 
   createPasswordConfirmationValidator():ValidatorFn{

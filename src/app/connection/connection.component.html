@@ -1,10 +1,11 @@
 <form style="width: 50%; margin-top: 12%; margin-left: 25%;" [formGroup]="applyForm">
+    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Connectez-vous</p>
     <!-- Email input -->
     <div class="form-outline mb-4">
         <input type="email" id="form2Example1" class="form-control" formControlName="email"/>
         <label class="form-label" for="form2Example1">Adresse email</label>
             <div class="field-message text-danger" for="form2Example1" *ngIf="applyForm.get('email')?.invalid && applyForm.get('email')?.touched">
-                Entrez votre adresse email
+                Entrez une adresse email valide
             </div>
     </div>
   
@@ -18,13 +19,13 @@
         <div class="field-message text-danger" for="form2Example1" *ngIf="applyForm.get('password')?.invalid && applyForm.get('password')?.touched">
             Entrez votre mot de passe
         </div>
-        <div class="field-message text-danger" for="form2Example1" *ngIf="applyForm.hasError('login')">
-            Adresse email ou mot de passe incorrect
+        <div class="field-message text-danger" for="form2Example1" *ngIf="message!=''">
+            {{message}}
         </div>
     </div>
   
     <!-- Submit button -->
-    <button type="button" class="btn btn-primary btn-block mb-4">Se connecter</button>
+    <button type="button" class="btn btn-primary btn-block mb-4" (click)="connectUser()" [disabled]="applyForm.get('password')?.invalid || applyForm.get('email')?.invalid">Se connecter</button>
   
     <!-- Register buttons -->
     <div class="text-center">

@@ -1,9 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApiService } from '../api/api.service';
-import { ActivatedRoute } from '@angular/router';
 import { User } from '../model/User';
-import { AbstractControl, AsyncValidatorFn, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, FormBuilder, Validators } from '@angular/forms';
 import { map } from 'rxjs/internal/operators/map';
+import { Router } from '@angular/router';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'connection',
@@ -15,10 +16,11 @@ export class ConnectionComponent {
   passwordVisibility: boolean = false;
   eye: string = "bi bi-eye";
   passwordType = "password";
+  message : string = "";
 
   endpoint = "users/"
   userId : number = 0;
-  user? :User;
+  user :User = new User();
 
   applyForm =  this._formBuilder.group(
     {
@@ -26,22 +28,24 @@ export class ConnectionComponent {
         "",
         {
           validators : [Validators.required, Validators.email],
+          updateOn : "change"
         }
       ],
       password : [
         "",
         {
-          validators : [Validators.required]
+          validators : [Validators.required],
+          updateOn : "change"
         }
       ]
-    },
-    {
-      validators : [this.createLoginValidator()],
-      updateOn : "submit"
     }
+    // {
+    //   asyncValidators : [this.createLoginValidator()],
+    //   updateOn : "submit"
+    // }
   );
 
-  constructor(private _api:ApiService, private _formBuilder: FormBuilder){
+  constructor(private _api: ApiService, private _formBuilder: FormBuilder, private _router: Router, private _authService: AuthService){
   }
 
   changePasswordVisibility(){
@@ -50,36 +54,38 @@ export class ConnectionComponent {
     this.eye = this.passwordVisibility?"bi bi-eye-slash":"bi bi-eye";
   }
 
-  getUser(user: User){
-    this._api.add(this.endpoint, user).subscribe(
-      (data : User) => {
-        this.user = data;
-      }
-    )
-  }
-
   connectUser(){
-    this.user.email= this.applyForm.value.email ?? '';
-    this.user.password= this.applyForm.value.password ?? '';
-    this.user.name= this.applyForm.value.name ?? '';
-    this.user.id= Math.ceil(Math.random()*100000);
-    this._api.add(this.endpoint, this.user).subscribe(
-      (data : User) => {
-        this.user = data;
-        this._router.navigate([`/login`], {});
-        alert("Inscription réussie! Connectez vous!!!");
-      }
-    )
-  }
-
-  createLoginValidator():AsyncValidatorFn{
-    return (form : AbstractControl) => {
-      const password = form.get('password')?.value;
-      const email = form.get('email')?.value;
-  
-      return this._api.findUserByEmail(this.endpoint, email).pipe(
-        map(user => user && user.password==password?null:{login: true})
-      )
+    if(this.applyForm.valid) {
+      this.user.email= this.applyForm.value.email ?? '';
+      this.user.password= this.applyForm.value.password ?? '';
+      this._api.findUserByEmail(this.endpoint, this.user.email).subscribe(
+        (data : User[]) => {
+          if (data[0].password == this.user.password) {
+            console.log(data[0])
+            this._authService.user.email= data[0].email;
+            this._authService.user.id= data[0].id;
+            this._authService.user.name= data[0].name;
+            this.user= new User();
+            this._authService.login("1234567891011121314151617181920212223242526272829");
+            this._router.navigate([`/articles`], {});
+            alert("Connexion réussie!!");
+          } else{
+            this.message = "Adresse email ou mot de passe incorrect";
+          }
+        }
+      );
     }
   }
+
+  // createLoginValidator():AsyncValidatorFn{
+  //   return (form : AbstractControl) => {
+  //     const password = form.get('password')?.value;
+  //     const email = form.get('email')?.value;
+
+  //     return this._api.findUserByEmail(this.endpoint, email).pipe(
+  //       map(user => (user && user.length!=0 && user[0].password==password)?null:{loginError: true})
+  //     )
+  //   }
+  // }
+
 }

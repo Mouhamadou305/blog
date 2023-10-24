@@ -19,7 +19,7 @@ export class ApiService {
     return this._httpClient.get(`${this.apiUrl}${endpoint}`).pipe(catchError(this.handleError));
   }
 
-  findUserByEmail(endpoint: string, email : string):Observable<any>{
+  findUserByEmail(endpoint: string, email : string | undefined):Observable<any>{
     return this._httpClient.get(`${this.apiUrl}${endpoint}?email=${email}`).pipe(catchError(this.handleError));
   }
 
