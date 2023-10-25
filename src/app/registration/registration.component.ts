@@ -38,6 +38,12 @@ export class RegistrationComponent {
           validators : [Validators.required]
         }
       ],
+      role : [
+        '',
+        {
+          validators : [Validators.required, this.createRoleValidator()]
+        }
+      ],
       password : [
         "",
         {
@@ -56,7 +62,9 @@ export class RegistrationComponent {
     }
   );
 
-  constructor(private _api: ApiService, private _router : Router, private _formBuilder : FormBuilder){}
+  constructor(private _api: ApiService, private _router : Router, private _formBuilder : FormBuilder){
+    console.log(this.applyForm.get("role")?.value)
+  }
 
   changePasswordVisibility(){
     this.passwordVisibility = !this.passwordVisibility;
@@ -86,6 +94,10 @@ export class RegistrationComponent {
     }
   }
 
+  prevent(event : any){
+    event.preventDefault();
+  }
+
   createPasswordConfirmationValidator():ValidatorFn{
     return (form : AbstractControl) : ValidationErrors | null => {
       const password = form.get('password')?.value;
@@ -104,6 +116,18 @@ export class RegistrationComponent {
       return this._api.findUserByEmail(this.endpoint, control.value).pipe(
               map(user => user && user.length!=0 ? {userExists:user} : null)
           );
+    }
+  }
+
+  createRoleValidator():ValidatorFn{
+    return (form : AbstractControl) : ValidationErrors | null => {
+      const role = form.get('role')?.value;
+  
+      if (role == "reader" || role == "editor") {
+        return null;
+      } else {
+        return { undefinedRole: true };
+      }
     }
   }
 

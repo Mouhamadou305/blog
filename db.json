@@ -41,7 +41,8 @@
       ],
       "likes": [
         2,
-        1
+        1,
+        59258
       ]
     },
     {
@@ -84,7 +85,8 @@
         }
       ],
       "likes": [
-        1
+        1,
+        59373
       ]
     },
     {
@@ -126,7 +128,9 @@
           "content": "La gestion du temps est une compétence qui s'apprend et s'améliore avec la pratique. En appliquant ces stratégies, vous pouvez maximiser votre productivité, réduire le stress lié aux délais, et vous rapprocher de l'atteinte de vos objectifs. Prenez le temps de planifier, de prioriser et d'éliminer les distractions, et vous constaterez une nette amélioration de votre efficacité. Ne sous-estimez pas le pouvoir d'une bonne gestion du temps pour transformer votre vie."
         }
       ],
-      "likes": []
+      "likes": [
+        59258
+      ]
     },
     {
       "id": 4,
@@ -259,25 +263,36 @@
       "id": 1,
       "email": "momo@kane.sn",
       "password": "passer",
-      "name": "Mouhamadou Kane"
+      "name": "Mouhamadou Kane",
+      "role": "reader"
     },
     {
       "id": 2,
       "email": "mama@kane.sn",
       "password": "passer",
-      "name": "Oulimata Kane"
+      "name": "Oulimata Kane",
+      "role": "reader"
     },
     {
       "email": "mountaga@wane.sn",
       "password": "passer",
       "name": "Mountaga Wane",
-      "id": 59258
+      "id": 59258,
+      "role": "editor"
     },
     {
       "email": "lol@lol.sn",
       "password": "passer",
       "name": "lol",
-      "id": 88408
+      "id": 88408,
+      "role": "editor"
+    },
+    {
+      "id": 59373,
+      "email": "test@test.sn",
+      "password": "passer",
+      "name": "Test",
+      "role": "reader"
     }
   ],
   "comments": [

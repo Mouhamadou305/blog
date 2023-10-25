@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../api/api.service';
 import { User } from '../model/User';
-import { AbstractControl, AsyncValidatorFn, FormBuilder, Validators } from '@angular/forms';
-import { map } from 'rxjs/internal/operators/map';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 
@@ -19,8 +18,6 @@ export class ConnectionComponent {
   message : string = "";
 
   endpoint = "users/"
-  userId : number = 0;
-  user :User = new User();
 
   applyForm =  this._formBuilder.group(
     {
@@ -56,17 +53,10 @@ export class ConnectionComponent {
 
   connectUser(){
     if(this.applyForm.valid) {
-      this.user.email= this.applyForm.value.email ?? '';
-      this.user.password= this.applyForm.value.password ?? '';
-      this._api.findUserByEmail(this.endpoint, this.user.email).subscribe(
+      this._api.findUserByEmail(this.endpoint, this.applyForm.value.email ?? "").subscribe(
         (data : User[]) => {
-          if (data[0].password == this.user.password) {
-            console.log(data[0])
-            this._authService.user.email= data[0].email;
-            this._authService.user.id= data[0].id;
-            this._authService.user.name= data[0].name;
-            this.user= new User();
-            this._authService.login("1234567891011121314151617181920212223242526272829");
+          if (data[0].password == this.applyForm.value.password) {
+            this._authService.login(data[0], "1234567891011121314151617181920212223242526272829");
             this._router.navigate([`/articles`], {});
             alert("Connexion réussie!!");
           } else{
@@ -75,6 +65,10 @@ export class ConnectionComponent {
         }
       );
     }
+  }
+
+  prevent(event : any){
+    event.preventDefault();
   }
 
   // createLoginValidator():AsyncValidatorFn{

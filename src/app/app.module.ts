@@ -15,6 +15,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TokenInterceptor } from './connection/interceptor/token.service';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
+import { CreateArticleComponent } from './create-article/create-article.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
     ConnectionComponent,
     ArticleUnitComponent,
     RegistrationComponent,
-    NavBarComponent
+    NavBarComponent,
+    CreateArticleComponent
     
   ],
   imports: [

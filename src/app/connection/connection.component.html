@@ -2,7 +2,7 @@
     <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Connectez-vous</p>
     <!-- Email input -->
     <div class="form-outline mb-4">
-        <input type="email" id="form2Example1" class="form-control" formControlName="email"/>
+        <input type="email" id="form2Example1" class="form-control" formControlName="email" (keyup.enter)="applyForm.valid?connectUser():''"/>
         <label class="form-label" for="form2Example1">Adresse email</label>
             <div class="field-message text-danger" for="form2Example1" *ngIf="applyForm.get('email')?.invalid && applyForm.get('email')?.touched">
                 Entrez une adresse email valide
@@ -12,8 +12,8 @@
     <!-- Password input -->
     <div class="form-outline mb-4">
         <div>
-            <input [type]="passwordType" id="form2Example2" class="form-control" formControlName="password"/>
-            <button class="{{eye}} passwordVisibility form-control" (click)="changePasswordVisibility()"></button>
+            <input [type]="passwordType" id="form2Example2" class="form-control" formControlName="password" (keydown.enter)="prevent($event)" (keyup.enter)="applyForm.valid?connectUser():''"/>
+            <button class="{{eye}} form-control passwordVisibility" (click)="changePasswordVisibility()"></button>
         </div>
         <label class="form-label" for="form2Example2">Mot de passe</label>
         <div class="field-message text-danger" for="form2Example1" *ngIf="applyForm.get('password')?.invalid && applyForm.get('password')?.touched">
@@ -25,7 +25,7 @@
     </div>
   
     <!-- Submit button -->
-    <button type="button" class="btn btn-primary btn-block mb-4" (click)="connectUser()" [disabled]="applyForm.get('password')?.invalid || applyForm.get('email')?.invalid">Se connecter</button>
+    <button type="button" class="btn btn-primary btn-block mb-4" (keyup.enter)="connectUser()" (click)="connectUser()" [disabled]="applyForm.invalid">Se connecter</button>
   
     <!-- Register buttons -->
     <div class="text-center">

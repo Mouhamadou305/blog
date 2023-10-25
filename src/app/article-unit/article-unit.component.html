@@ -7,17 +7,24 @@
             <p>{{paragraph.content}}</p>
         </div>
     </article>
-    <svg id="like" xmlns="http://www.w3.org/2000/svg" width="5%" fill="gray" class="bi bi-heart-fill" viewBox="0 0 16 16" (click)="like()" style="margin-top: 4%;margin-bottom: 4%">
-        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"></path>
-    </svg>
-    <label for="like" style="font-size: 200%; margin-left: 2%;">J'aime</label>
+    <i id="like" (click)="like()" class="bi bi-heart-fill" [style]="'font-size: 200%; margin-top: 8%;margin-bottom: 4%;color:'+heartColor"></i>
+    <label for="like" (click)="like()" style="font-size: 200%; margin-left: 2%;">J'aime</label>
+    <h1><small class="pull-right">{{article.likes.length==0?'Soyez le premier à aimer':(article.likes.length==1?'1 seul utilisateur a aimé':article.likes.length+' utilisateurs ont aimé')}} cet article </small>  </h1>
 </div>
 
-<div class="col-md-10 blogShort">
+<div class="col-md-10 blogShort" [formGroup]="applyForm">
     <div class="col-md-8">
         <div class="page-header">
-            <h1><small class="pull-right">{{comments.length}} commentaires</small> Commentaires </h1>
+            <h1><small class="pull-right">{{comments.length}} {{comments.length==0 || comments.length==1?'commentaire':'commentaires'}}</small> Commentaires </h1>
         </div>
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="" style="height: 100px" id="floatingTextarea" formControlName="comment"></textarea>
+            <label for="floatingTextarea">{{comments.length==0?'Soyez le premier à commenter cet article!':'Laissez un commentaire ici'}}</label>
+            <div class="field-message text-danger" for="form2Example1" *ngIf="commentErrorMessage!=''">
+                {{commentErrorMessage}}
+            </div>
+        </div>
+        <input (click)="comment()" [disabled]="applyForm.invalid" type="submit" class="btn btn-primary btn-lg" value="Commenter"/>
         <div *ngFor="let comment of comments" class="comments-list">
             <div class="media">
                 <p class="pull-right"><small>{{comment.commentDate}}</small></p>
@@ -25,7 +32,7 @@
                     <img src="../../assets/profile.png" style="width: 12%;">
                 </a>
                 <div class="media-body">
-                    <h4 class="media-heading user_name">{{comment.user.name}}</h4>
+                    <h4 class="media-heading user_name">{{comment.user?.name}}</h4>
                     {{comment.content}}
                 </div>
             </div>

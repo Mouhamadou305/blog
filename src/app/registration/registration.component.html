@@ -14,10 +14,10 @@
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="text" id="form3Example1c" class="form-control" formControlName="name"/>
+                                            <input type="text" id="form3Example1c" class="form-control" formControlName="name" (keydown.enter)="prevent($event)" (keyup.enter)="applyForm.valid?createUser():''"/>
                                             <label class="form-label" for="form3Example1c">Votre nom</label>
                                             <div class="field-message text-danger" for="form3Example1c" *ngIf="applyForm.get('name')?.invalid && applyForm.get('name')?.touched">
-                                                You should enter your name.
+                                                Vous devez saisir votre nom.
                                             </div>
                                         </div>
                                     </div>
@@ -25,10 +25,25 @@
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="email" id="form3Example3c" class="form-control" formControlName="email"/>
+                                            <input type="email" id="form3Example3c" class="form-control" formControlName="email" (keydown.enter)="prevent($event)" (keyup.enter)="applyForm.valid?createUser():''"/>
                                             <label class="form-label" for="form3Example3c">Votre email</label>
                                             <div class="field-message text-danger" for="form3Example3c" *ngIf="applyForm.get('email')?.invalid && applyForm.get('email')?.touched">
-                                                {{applyForm.get('email')?.hasError("userExists")?"Cet utilisateur existe déjà.":"You should enter a valid email."}}
+                                                {{applyForm.get('email')?.hasError("userExists")?"Cet utilisateur existe déjà.":"Vous devez entrer une adresse email valide."}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <select class="form-select form-control" formControlName="role" id="floatingSelect" aria-label="Floating label select example">
+                                                <option value="" selected>Choisissez votre rôle</option>
+                                                <option value="editor">Rédacteur</option>
+                                                <option value="reader">Lecteur</option>
+                                            </select>
+                                            <label for="floatingSelect">Votre rôle</label>
+                                            <div class="field-message text-danger" for="form3Example4c" *ngIf="applyForm.get('role')?.invalid && applyForm.get('role')?.touched">
+                                                Vous devez spécifier votre rôle.
                                             </div>
                                         </div>
                                     </div>
@@ -37,12 +52,12 @@
                                         <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <div>
-                                                <input [type]="passwordType" id="form3Example4c" class="form-control" formControlName="password"/>
+                                                <input [type]="passwordType" id="form3Example4c" class="form-control" formControlName="password" (keydown.enter)="prevent($event)" (keyup.enter)="applyForm.valid?createUser():''"/>
                                                 <button class="{{eye}} passwordVisibility form-control" (click)="changePasswordVisibility()"></button>
                                             </div>
-                                            <label class="form-label" for="form3Example4c">Votre Mot de Passe</label>
+                                            <label class="form-label" for="form3Example4c">Votre mot de passe</label>
                                             <div class="field-message text-danger" for="form3Example4c" *ngIf="applyForm.get('password')?.invalid && applyForm.get('password')?.touched">
-                                                You should enter a password.
+                                                Vous devez spécifier un mot de passe.
                                             </div>
                                         </div>
                                     </div>
@@ -51,16 +66,16 @@
                                         <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <div>
-                                                <input [type]="confirmationPasswordType" id="form3Example4cd" class="form-control" formControlName="confirmation"/>
+                                                <input [type]="confirmationPasswordType" id="form3Example4cd" class="form-control" formControlName="confirmation" (keydown.enter)="prevent($event)" (keyup.enter)="applyForm.valid?createUser():''"/>
                                                 <button class="{{confirmationEye}} passwordVisibility form-control" (click)="changeConfirmationVisibility()"></button>
                                             </div>
                                             <div class="field-message text-danger" for="form3Example4cd" *ngIf="applyForm.get('confirmation')?.invalid && applyForm.get('confirmation')?.touched">
-                                                You should confirm your password.
+                                                Vous devez confirmer votre mot de passe.
                                             </div>
                                             <div class="field-message text-danger" for="form3Example4cd" *ngIf="applyForm.hasError('mismatch') && !applyForm.get('confirmation')?.invalid && applyForm.get('confirmation')?.touched">
-                                                The passwords don't match.
+                                                Les mots de passe doivent correspondre.
                                             </div>
-                                            <label class="form-label" for="form3Example4cd">Confirmez votre mot de passe</label>
+                                            <label class="form-label" for="form3Example4cd">Confirmez votre mot de passe.</label>
                                         </div>
                                     </div>
 

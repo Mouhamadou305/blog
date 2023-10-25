@@ -13,7 +13,6 @@ export class NavBarComponent implements DoCheck{
   user? = this._authService.user;
 
   deconnectUser(){
-    this._authService.user = new User();
     this.user = new User();
     this._authService.logout();
     this._router.navigate([`/login`], {});

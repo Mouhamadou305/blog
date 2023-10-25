@@ -1,0 +1,51 @@
+<!-- <form style="width: 50%; margin-top: 12%; margin-left: 25%;" [formGroup]="applyForm">
+    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Rédigez votre article!</p>
+    
+    <div class="form-outline mb-4">
+        <input type="text" id="form2Example1" class="form-control" required name="title" (keyup.enter)="applyForm.valid?createArticle():''"
+        [(ngModel)]="articleTitle" #title="ngModel"/>
+        <label class="form-label" for="form2Example1">Titre</label>
+            <div class="field-message text-danger" for="form2Example" *ngIf="title.invalid && title.touched">
+                Entrez un titre percutant pour votre article.
+            </div>
+    </div>
+    <div *ngFor="let paragraph of paragraphs; let i = index">
+        <div class="form-outline mb-4">
+            <input type="text" id="form2Example1" class="form-control" required name="paragraphTitle{{i}}" (keyup.enter)="applyForm.valid?createArticle():''"
+            [(ngModel)]="paragraphTitle" #pTitle="ngModel"/>
+            <label class="form-label" for="form2Example1">Titre du paragraphe</label>
+            <div class="field-message text-danger" for="form2Example1" *ngIf="applyForm.get('paragraphTitle{{i}}')?.invalid && applyForm.get('paragraphTitle{{i}}')?.touched">
+                Entrez un titre pour ce paragraphe.
+            </div>
+        </div>
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="" required style="height: 100px" id="floatingTextarea" formControlName="paragraphContent{{i}}"></textarea>
+            <label for="floatingTextarea">{{comments.length==0?'Soyez le premier à commenter cet article!':'Laissez un commentaire ici'}}</label>
+            <div class="field-message text-danger" for="form2Example1" *ngIf="applyForm.get('paragraphTitle{{i}}')?.invalid && applyForm.get('paragraphTitle{{i}}')?.touched">
+                {{commentErrorMessage}}
+            </div>
+        </div>
+    </div>
+
+    <div class="form-outline mb-4">
+        <div>
+            <input [type]="passwordType" id="form2Example2" class="form-control" formControlName="password" (keydown.enter)="prevent($event)" (keyup.enter)="applyForm.valid?connectUser():''"/>
+            <button class="{{eye}} form-control passwordVisibility" (click)="changePasswordVisibility()"></button>
+        </div>
+        <label class="form-label" for="form2Example2">Mot de passe</label>
+        <div class="field-message text-danger" for="form2Example1" *ngIf="applyForm.get('password')?.invalid && applyForm.get('password')?.touched">
+            Entrez votre mot de passe
+        </div>
+        <div class="field-message text-danger" for="form2Example1" *ngIf="message!=''">
+            {{message}}
+        </div>
+    </div>
+  
+    
+    <button type="button" class="btn btn-primary btn-block mb-4" (keyup.enter)="connectUser()" (click)="connectUser()" [disabled]="applyForm.invalid">Se connecter</button>
+  
+    
+    <div class="text-center">
+        <p>Vous n'êtes pas membre? <a routerLink="/registration">S'inscrire</a></p>
+    </div>
+</form> -->
