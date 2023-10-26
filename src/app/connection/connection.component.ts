@@ -55,6 +55,9 @@ export class ConnectionComponent {
     if(this.applyForm.valid) {
       this._api.findUserByEmail(this.endpoint, this.applyForm.value.email ?? "").subscribe(
         (data : User[]) => {
+          if(data.length==0){
+            this.message = "Adresse email ou mot de passe incorrect";
+          }
           if (data[0].password == this.applyForm.value.password) {
             this._authService.login(data[0], "1234567891011121314151617181920212223242526272829");
             this._router.navigate([`/articles`], {});

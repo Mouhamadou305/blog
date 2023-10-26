@@ -5,6 +5,7 @@
       "title": "Maximiser votre productivité : 10 astuces pour une meilleure gestion du temps",
       "image": "../../assets/image.jpg",
       "description": "Cet article explore en détail les stratégies clés pour optimiser la gestion du temps et maximiser la productivité. Il aborde des sujets tels que l'établissement d'objectifs clairs, la priorisation des tâches, la planification quotidienne, l'élimination des distractions, l'utilisation d'outils de gestion du temps et la pratique de l'auto-soin. En mettant l'accent sur l'importance de la gestion efficace du temps dans la réduction du stress et l'atteinte des objectifs, cet article offre des conseils pratiques et des astuces pour améliorer la productivité au quotidien.",
+      "idEditor": 1,
       "content": [
         {
           "title": "Introduction :",
@@ -50,6 +51,7 @@
       "title": "J'ai juste dupliquer le premier",
       "image": "../../assets/image.jpg",
       "description": "Cet article explore en détail les stratégies clés pour optimiser la gestion du temps et maximiser la productivité. Il aborde des sujets tels que l'établissement d'objectifs clairs, la priorisation des tâches, la planification quotidienne, l'élimination des distractions, l'utilisation d'outils de gestion du temps et la pratique de l'auto-soin. En mettant l'accent sur l'importance de la gestion efficace du temps dans la réduction du stress et l'atteinte des objectifs, cet article offre des conseils pratiques et des astuces pour améliorer la productivité au quotidien.",
+      "idEditor": 1,
       "content": [
         {
           "title": "Introduction :",
@@ -94,6 +96,7 @@
       "title": "En vrai c'est encore le même article",
       "image": "../../assets/image.jpg",
       "description": "Cet article explore en détail les stratégies clés pour optimiser la gestion du temps et maximiser la productivité. Il aborde des sujets tels que l'établissement d'objectifs clairs, la priorisation des tâches, la planification quotidienne, l'élimination des distractions, l'utilisation d'outils de gestion du temps et la pratique de l'auto-soin. En mettant l'accent sur l'importance de la gestion efficace du temps dans la réduction du stress et l'atteinte des objectifs, cet article offre des conseils pratiques et des astuces pour améliorer la productivité au quotidien.",
+      "idEditor": 2,
       "content": [
         {
           "title": "Introduction :",
@@ -137,6 +140,7 @@
       "title": "En vrai c'est encore le même article",
       "image": "../../assets/image.jpg",
       "description": "Cet article explore en détail les stratégies clés pour optimiser la gestion du temps et maximiser la productivité. Il aborde des sujets tels que l'établissement d'objectifs clairs, la priorisation des tâches, la planification quotidienne, l'élimination des distractions, l'utilisation d'outils de gestion du temps et la pratique de l'auto-soin. En mettant l'accent sur l'importance de la gestion efficace du temps dans la réduction du stress et l'atteinte des objectifs, cet article offre des conseils pratiques et des astuces pour améliorer la productivité au quotidien.",
+      "idEditor": 2,
       "content": [
         {
           "title": "Introduction :",
@@ -180,6 +184,7 @@
       "title": "En vrai c'est encore le même article",
       "image": "../../assets/image.jpg",
       "description": "Cet article explore en détail les stratégies clés pour optimiser la gestion du temps et maximiser la productivité. Il aborde des sujets tels que l'établissement d'objectifs clairs, la priorisation des tâches, la planification quotidienne, l'élimination des distractions, l'utilisation d'outils de gestion du temps et la pratique de l'auto-soin. En mettant l'accent sur l'importance de la gestion efficace du temps dans la réduction du stress et l'atteinte des objectifs, cet article offre des conseils pratiques et des astuces pour améliorer la productivité au quotidien.",
+      "idEditor": 2,
       "content": [
         {
           "title": "Introduction :",
@@ -221,6 +226,7 @@
       "title": "En vrai c'est encore le même article",
       "image": "../../assets/image.jpg",
       "description": "Cet article explore en détail les stratégies clés pour optimiser la gestion du temps et maximiser la productivité. Il aborde des sujets tels que l'établissement d'objectifs clairs, la priorisation des tâches, la planification quotidienne, l'élimination des distractions, l'utilisation d'outils de gestion du temps et la pratique de l'auto-soin. En mettant l'accent sur l'importance de la gestion efficace du temps dans la réduction du stress et l'atteinte des objectifs, cet article offre des conseils pratiques et des astuces pour améliorer la productivité au quotidien.",
+      "idEditor": 2,
       "content": [
         {
           "title": "Introduction :",
@@ -256,6 +262,26 @@
         }
       ],
       "likes": []
+    },
+    {
+      "id": 29470,
+      "title": "Juste un très court article de test",
+      "description": "Cet article est assez court. I sert à vérifier que la rédaction d'article est fonctionnelle. Cela devrait marcher en tout cas",
+      "content": [
+        {
+          "title": "Introduction",
+          "content": "lkfjdkljfldjfl jfjlkdjf j ldkjflkjf fjdklfjdlfj jfjfdjfkdf jfkfjkfjkdfj k jffj djf kd jfdjf dkjfjfkdfjk jkdfjdjf jdkjf fj djf dfkfjkfjk   jj f jj fkfjkfjk j j jkj dk jfdkfjdkfj j jdjf kf jdkj fd jkd jkj fkdj fkdj kdj fkjfdkfj kdj kdjf kdjf kdfjdkfj dkj kdfj kj kdj fkdjfdkjf kdfjkdfjdkjfkdfjkj k jkd jk jkd jfk jk jk jk j kj kdf jkdj kd jkdjfkfnjndjfnfdkn d k jf kd fndkfn dn  nknd kfndk nn fn n kn fknf kn n n ndk ndknf jn  ndkn jn nf j njfn djn fjdn jdn dj jdn  dj njd nj n fjfnjnf jd fn j nj nj n"
+        },
+        {
+          "title": "Conclusion",
+          "content": "lkfjdkljfldjfl jfjlkdjf j ldkjflkjf fjdklfjdlfj jfjfdjfkdf jfkfjkfjkdfj k jffj djf kd jfdjf dkjfjfkdfjk jkdfjdjf jdkjf fj djf dfkfjkfjk   jj f jj fkfjkfjk j j jkj dk jfdkfjdkfj j jdjf kf jdkj fd jkd jkj fkdj fkdj kdj fkjfdkfj kdj kdjf kdjf kdfjdkfj dkj kdfj kj kdj fkdjfdkjf kdfjkdfjdkjfkdfjkj k jkd jk jkd jfk jk jk jk j kj kdf jkdj kd jkdjfkfnjndjfnfdkn d k jf kd fndkfn dn  nknd kfndk nn fn n kn fknf kn n n ndk ndknf jn  ndkn jn nf j njfn djn fjdn jdn dj jdn  dj njd nj n fjfnjnf jd fn j nj nj n"
+        }
+      ],
+      "image": "",
+      "likes": [
+        59258
+      ],
+      "idEditor": 59258
     }
   ],
   "users": [
@@ -293,6 +319,13 @@
       "password": "passer",
       "name": "Test",
       "role": "reader"
+    },
+    {
+      "id": 48074,
+      "email": "nouveau@nouv.sn",
+      "password": "passer",
+      "name": "Nouveau",
+      "role": "editor"
     }
   ],
   "comments": [
@@ -309,6 +342,13 @@
       "articleId": 1,
       "commentDate": "1696865184898",
       "content": "J'apprécie particulièrement l'importance accordée à l'auto-soin, car je comprends maintenant que prendre soin de moi-même est essentiel pour maintenir ma productivité à long terme. Un grand merci à l'auteur pour ce guide utile ! Je le recommande vivement à tous ceux qui cherchent à maximiser leur efficacité au quotidien."
+    },
+    {
+      "id": 21586,
+      "userId": 59258,
+      "articleId": 29470,
+      "commentDate": 1698313733752,
+      "content": "Superbe exemple d'article. Merci pour tout."
     }
   ]
 }

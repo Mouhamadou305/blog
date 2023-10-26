@@ -83,6 +83,7 @@ export class RegistrationComponent {
       this.user.email= this.applyForm.value.email ?? '';
       this.user.password= this.applyForm.value.password ?? '';
       this.user.name= this.applyForm.value.name ?? '';
+      this.user.role= this.applyForm.value.role ?? '';
       this.user.id= Math.ceil(Math.random()*100000);
       this._api.add(this.endpoint, this.user).subscribe(
         (data : User) => {
@@ -120,8 +121,8 @@ export class RegistrationComponent {
   }
 
   createRoleValidator():ValidatorFn{
-    return (form : AbstractControl) : ValidationErrors | null => {
-      const role = form.get('role')?.value;
+    return (control : AbstractControl) : ValidationErrors | null => {
+      const role = control.value;
   
       if (role == "reader" || role == "editor") {
         return null;

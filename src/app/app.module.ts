@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TokenInterceptor } from './connection/interceptor/token.service';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import { CreateArticleComponent } from './create-article/create-article.component';
+import { ParagraphControlService } from './create-article/services/paragraph-control.service';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { CreateArticleComponent } from './create-article/create-article.componen
     ArticleUnitComponent,
     RegistrationComponent,
     NavBarComponent,
+    CreateArticleComponent,
     CreateArticleComponent
     
   ],
@@ -38,7 +40,7 @@ import { CreateArticleComponent } from './create-article/create-article.componen
     ReactiveFormsModule,
     BrowserAnimationsModule
   ],
-  providers: [ApiService, {provide: HTTP_INTERCEPTORS,useClass: TokenInterceptor,multi: true}],
+  providers: [ApiService, {provide: HTTP_INTERCEPTORS,useClass: TokenInterceptor,multi: true}, ParagraphControlService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

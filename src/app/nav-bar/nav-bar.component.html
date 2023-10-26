@@ -15,6 +15,9 @@
         <li class="nav-item" routerLinkActive="active" *ngIf="user?.id==0">
           <a class="nav-item nav-link" routerLink="/registration">Inscription</a>
         </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="user?.id!=0 && user?.role=='editor'">
+          <a class="nav-item nav-link" routerLink="/createArticle">Rédaction</a>
+        </li>
         <li class="nav-item dropdown" *ngIf="user?.id!=0" dropdown>
           <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" dropdownToggle>
             {{user?.name}}

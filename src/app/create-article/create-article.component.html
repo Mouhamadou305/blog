@@ -1,51 +1,54 @@
-<!-- <form style="width: 50%; margin-top: 12%; margin-left: 25%;" [formGroup]="applyForm">
+<div  style="width: 50%; margin-top: 12%; margin-left: 25%;">
     <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Rédigez votre article!</p>
+    <div class="form-outline mb-4">
+        <input type="number" id="form2Example1" class="form-control" required [(ngModel)]="numberOfParagraphs" #nparag="ngModel" (change)="reCreateForm()"/>
+        <label class="form-label" for="form2Example1">Nombre de paragraphes</label>
+        <div class="field-message text-danger" for="form2Example1" *ngIf="nparag.invalid && nparag.touched">
+            Vous devez entrer le nombre de paragraphes que doit contenir votre article.
+        </div>
+    </div>
+</div>
+<form *ngIf="applyForm" style="width: 50%; margin-left: 25%;" [formGroup]="applyForm">
+    <!-- Title input -->
     
     <div class="form-outline mb-4">
-        <input type="text" id="form2Example1" class="form-control" required name="title" (keyup.enter)="applyForm.valid?createArticle():''"
-        [(ngModel)]="articleTitle" #title="ngModel"/>
-        <label class="form-label" for="form2Example1">Titre</label>
-            <div class="field-message text-danger" for="form2Example" *ngIf="title.invalid && title.touched">
-                Entrez un titre percutant pour votre article.
-            </div>
-    </div>
-    <div *ngFor="let paragraph of paragraphs; let i = index">
-        <div class="form-outline mb-4">
-            <input type="text" id="form2Example1" class="form-control" required name="paragraphTitle{{i}}" (keyup.enter)="applyForm.valid?createArticle():''"
-            [(ngModel)]="paragraphTitle" #pTitle="ngModel"/>
-            <label class="form-label" for="form2Example1">Titre du paragraphe</label>
-            <div class="field-message text-danger" for="form2Example1" *ngIf="applyForm.get('paragraphTitle{{i}}')?.invalid && applyForm.get('paragraphTitle{{i}}')?.touched">
-                Entrez un titre pour ce paragraphe.
-            </div>
-        </div>
-        <div class="form-floating">
-            <textarea class="form-control" placeholder="" required style="height: 100px" id="floatingTextarea" formControlName="paragraphContent{{i}}"></textarea>
-            <label for="floatingTextarea">{{comments.length==0?'Soyez le premier à commenter cet article!':'Laissez un commentaire ici'}}</label>
-            <div class="field-message text-danger" for="form2Example1" *ngIf="applyForm.get('paragraphTitle{{i}}')?.invalid && applyForm.get('paragraphTitle{{i}}')?.touched">
-                {{commentErrorMessage}}
-            </div>
+        <input type="text" id="form2Example2" class="form-control" formControlName="title" (keyup.enter)="applyForm.valid?createArticle():''"/>
+        <label class="form-label" for="form2Example2">Titre</label>
+        <div class="field-message text-danger" for="form2Example2" *ngIf="applyForm.get('title')?.invalid && applyForm.get('title')?.touched">
+            Vous devez entrer un titre pour votre article.
         </div>
     </div>
-
     <div class="form-outline mb-4">
-        <div>
-            <input [type]="passwordType" id="form2Example2" class="form-control" formControlName="password" (keydown.enter)="prevent($event)" (keyup.enter)="applyForm.valid?connectUser():''"/>
-            <button class="{{eye}} form-control passwordVisibility" (click)="changePasswordVisibility()"></button>
+        <input type="text" id="form2Example3" class="form-control" formControlName="image" (keyup.enter)="applyForm.valid?createArticle():''"/>
+        <label class="form-label" for="form2Example3">Image d'illustration</label>
+    </div>
+    <div class="form-floating">
+        <textarea class="form-control" placeholder="" style="height: 100px" id="floatingTextarea" formControlName="description"></textarea>
+        <label for="floatingTextarea">Saisissez la description de l'article.</label>
+        <div class="field-message text-danger" for="floatingTextarea" *ngIf="applyForm.get('description')?.invalid && applyForm.get('description')?.touched">
+            Vous devez saisir une description pour votre article.
         </div>
-        <label class="form-label" for="form2Example2">Mot de passe</label>
-        <div class="field-message text-danger" for="form2Example1" *ngIf="applyForm.get('password')?.invalid && applyForm.get('password')?.touched">
-            Entrez votre mot de passe
-        </div>
-        <div class="field-message text-danger" for="form2Example1" *ngIf="message!=''">
-            {{message}}
+    </div>
+    
+    <div *ngIf="nparag.valid && nparag.touched && numberOfParagraphs!=0">
+        <div *ngFor="let ind of [].constructor(numberOfParagraphs); let i = index">
+            <div class="form-outline mb-4" style="margin-top: 5%;">
+                <input type="text" id="form2Example4" class="form-control" required [formControlName]="'paragraphTitle'+i" (keyup.enter)="applyForm.valid?createArticle():''"/>
+                <label class="form-label" for="form2Example4">Titre du paragraphe</label>
+                <div class="field-message text-danger" for="form2Example4" *ngIf="applyForm.get('paragraphTitle'+i)?.invalid && applyForm.get('paragraphTitle'+i)?.touched">
+                    Entrez un titre pour ce paragraphe.
+                </div>
+            </div>
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="" required style="height: 100px" id="floatingTextarea2" formControlName="paragraphContent{{i}}" (keyup.enter)="applyForm.valid?createArticle():''"></textarea>
+                <label for="floatingTextarea2">Saisissez le contenu du paragraphe.</label>
+                <div class="field-message text-danger" for="floatingTextarea2" *ngIf="applyForm.get('paragraphContent'+i)?.invalid && applyForm.get('paragraphContent'+i)?.touched">
+                    Entrez le contenu de ce paragraphe.
+                </div>
+            </div>
         </div>
     </div>
   
-    
-    <button type="button" class="btn btn-primary btn-block mb-4" (keyup.enter)="connectUser()" (click)="connectUser()" [disabled]="applyForm.invalid">Se connecter</button>
-  
-    
-    <div class="text-center">
-        <p>Vous n'êtes pas membre? <a routerLink="/registration">S'inscrire</a></p>
-    </div>
-</form> -->
+    <!-- Submit button -->
+    <button style="margin-top: 5%;" type="button" class="btn btn-primary btn-block mb-4" (keyup.enter)="createArticle()" (click)="createArticle()" [disabled]="applyForm.invalid">Publier l'article!</button>
+</form>

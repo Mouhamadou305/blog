@@ -14,7 +14,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class ArticleUnitComponent implements OnInit {
 
-  article : Article = new Article("", "", [], "", []);
+  article : Article = new Article("", "", [], "", [], 0);
   endpoint : string = "articles/";
   articleId : number = 0;
   comments : Comment[]=[];
@@ -58,6 +58,9 @@ export class ArticleUnitComponent implements OnInit {
         }else{
           this.heartColor = "gray";
         }
+        this._api.get("users/"+this.article.idEditor).subscribe(
+          (data : User) => {this.article.user= data;}
+        );
       }
     );
   }
@@ -81,6 +84,11 @@ export class ArticleUnitComponent implements OnInit {
       this.commentErrorMessage = "";
       let comment : Comment = new Comment(id, this.article.id, Date.now(), this.applyForm.get("comment")?.value ?? "");
       this._api.add("comments", comment).subscribe();
+      this._api.get("users/"+id).subscribe(
+        (userData: User)=>{
+          comment.user = userData;
+        }
+      )
       this.comments.push(comment);
       
     }else{
