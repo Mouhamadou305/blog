@@ -7,7 +7,7 @@ This project is a mini-blog. You can :
 
 ## JSON-server
 
-Install json server with npm and run it in the root folder of the todo-list application. On the environment.ts file, the endpoint of the json-server is specified. You can change it if needed.
+Install json server with npm and run it in the root folder of the blog application. On the environment.ts file, the endpoint of the json-server is specified. You can change it if needed.
 
 ## Development server
 
