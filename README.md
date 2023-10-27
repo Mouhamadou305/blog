@@ -1,10 +1,17 @@
 # Blog
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
+This project is a mini-blog. You can :
+* As a visitor, see the articles that are available.
+* Register yourself as a new reader in order to be able to read, like and comment the articles.
+* You can also register yourself as an editor. You will in addition,  be able to publish new articles.
+
+## JSON-server
+
+Install json server with npm and run it in the root folder of the todo-list application. On the environment.ts file, the endpoint of the json-server is specified. You can change it if needed.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files. 
 
 ## Code scaffolding
 
